@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<!-- HankookTire hankookTire = new HakookTire(); -->
+	<bean id="hankookTire" class="basic.di.xml01.HankookTire"></bean>
+
+	<!-- Car car = new Car(); -->
+	<!-- Car c1 = new Car(new HankookTire); -->
+	<bean id="car" class="basic.di.xml01.Car">
+		<constructor-arg ref="hankookTire" />
+	</bean>
+
+	<bean id="car1" class="basic.di.xml01.Car">
+		<constructor-arg value="genesis"></constructor-arg>
+		<constructor-arg value="2023"></constructor-arg>
+	</bean>
+
+	<bean id="car2" class="basic.di.xml01.Car">
+		<constructor-arg ref="hankookTire"></constructor-arg>
+		<constructor-arg value="genesis"></constructor-arg>
+	</bean>
+
+	<bean id="car3" class="basic.di.xml01.Car">
+		<constructor-arg ref="hankookTire" index="0"></constructor-arg>
+		<constructor-arg value="2020" type="int" index="2"></constructor-arg>
+		<constructor-arg value="genesis" type="String"
+			index="1"></constructor-arg>
+	</bean>
+
+	<bean id="car4" class="basic.di.xml01.Car">
+		<property name="driver">
+			<list>
+				<value>엄마</value>
+				<value>아빠</value>
+				<value>언니</value>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="car5" class="basic.di.xml01.Car">
+		<constructor-arg>
+			<map>
+				<entry key="make" value="Toyota" />
+				<entry key="model" value="Camry" />
+				<entry key="year" value="2023" />
+			</map>
+		</constructor-arg>
+	</bean>
+</beans>

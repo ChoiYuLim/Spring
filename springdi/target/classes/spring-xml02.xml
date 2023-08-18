@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<!-- Car car = new Car(); -->
+	<bean id="car" class="basic.di.xml02.Car">
+		<property name="tire" ref="hankookTire"></property>
+		<property name="s_tire" ref="kumhoTire"></property>
+		<property name="carName" value="genesis"></property>
+		<property name="year" value="2022"></property>
+	</bean>
+	<!-- HankookTire hankookTire = new HakookTire(); -->
+	<bean id="hankookTire" class="basic.di.xml02.HankookTire"></bean>
+	<!-- KumhoTire kumhoTire = new KumhoTire(); -->
+	<bean id="kumhoTire" class="basic.di.xml02.KumhoTire"></bean>
+
+	<!-- Car car = new Car(); KumhoTire kumhoTire = new KumhoTire(); car.setTire(kumhoTire); -->
+
+
+</beans>
