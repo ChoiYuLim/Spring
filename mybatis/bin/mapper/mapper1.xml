@@ -9,17 +9,37 @@
 		<result column="reg_date" property="regDate" />
 		<!-- <result column="count" property="count" /> -->
 	</resultMap>
-	
-	<select id="selectDSQLif1" parameterType="String" resultType="boardVO">
+
+	<select id="selectDforeach1" parameterType="int[]"
+		resultType="boardVO">
 		select * from t_board
-		<if test="title != null">
-			where title=#{title}</if>
+		where no in
+		<foreach collection="array" item="num" separator="," open="(" close=")">#{num}
+		</foreach>
 	</select>
 	
-	<select id="selectDSQLif2" parameterType="boardVO" resultType="boardVO">
+	<select id="selectDforeach2" parameterType="boardVO"
+		resultType="boardVO">
+		select * from t_board
+		where no in
+		<foreach collection="numbers" item="num" separator="," open="(" close=")">#{num}
+		</foreach>
+	</select>
+
+	<select id="selectDSQLif1" parameterType="String"
+		resultType="boardVO">
 		select * from t_board
 		<if test="title != null">
-			where title=#{title}</if>
+			where title=#{title}
+		</if>
+	</select>
+
+	<select id="selectDSQLif2" parameterType="boardVO"
+		resultType="boardVO">
+		select * from t_board
+		<if test="title != null">
+			where title=#{title}
+		</if>
 	</select>
 
 	<select id="selectDSQL" resultMap="boardMap">

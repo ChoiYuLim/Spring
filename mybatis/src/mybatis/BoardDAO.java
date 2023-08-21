@@ -26,26 +26,49 @@ public class BoardDAO {
         // selectByNo2();
         // delete();
         // update();
-        //selectDynamicSQL();
-        //selectDynamicSQLif();
-        selectDynamicSQLif2();
+        // selectDynamicSQL();
+        // selectDynamicSQLif();
+        // selectDynamicSQLif2();
+        //selectDforeach1();
+        selectDforeach2();
+    }
+
+    public void selectDforeach1() {
+        int[] a1 = {1, 2, 3, 4, 5, 6};
+
+        List<BoardVO> boardlist = sqlSession.selectList("mybatis.BoardDAO.selectDforeach1", a1);
+        for (BoardVO board : boardlist) {
+            System.out.println(board);
+        }
+    }
+
+    public void selectDforeach2() {
+        BoardVO b1 = new BoardVO();
+        int[] a1 = {1, 2, 3, 4, 5, 6};
+        b1.setNumbers(a1);
+
+        List<BoardVO> boardlist = sqlSession.selectList("mybatis.BoardDAO.selectDforeach2", b1);
+        for (BoardVO board : boardlist) {
+            System.out.println(board);
+        }
     }
 
     public void selectDynamicSQLif() {
-        List<BoardVO> boardlist = sqlSession.selectList("mybatis.BoardDAO.selectDSQLif1", "new title");
+        List<BoardVO> boardlist =
+                sqlSession.selectList("mybatis.BoardDAO.selectDSQLif1", "new title");
 
-        for(BoardVO boardVO: boardlist) {
+        for (BoardVO boardVO : boardlist) {
             System.out.println(boardVO);
         }
     }
-    
+
     public void selectDynamicSQLif2() {
         BoardVO boardVO = new BoardVO();
         boardVO.setTitle("new title");
-        
+
         List<BoardVO> boardlist = sqlSession.selectList("mybatis.BoardDAO.selectDSQLif2", boardVO);
 
-        for(BoardVO board: boardlist) {
+        for (BoardVO board : boardlist) {
             System.out.println(board);
         }
     }
@@ -118,19 +141,19 @@ public class BoardDAO {
         inputboardVO.setWriter("최민영");
         List<BoardVO> boardlist =
                 sqlSession.selectList("mybatis.BoardDAO.selectDSQL", inputboardVO);
-        for(BoardVO boardVO : boardlist) {
+        for (BoardVO boardVO : boardlist) {
             System.out.println(boardVO);
         }
     }
-    
+
     public void selectDynamicSQL2() {
         BoardVO inputboardVO = new BoardVO();
-       // inputboardVO.setTitle("좋은아침");
+        // inputboardVO.setTitle("좋은아침");
         inputboardVO.setWriter("최유림");
         List<BoardVO> boardlist =
                 sqlSession.selectList("mybatis.BoardDAO.selectDSQL2", inputboardVO);
-        
-        for(BoardVO boardVO : boardlist) {
+
+        for (BoardVO boardVO : boardlist) {
             System.out.println(boardVO);
         }
     }
