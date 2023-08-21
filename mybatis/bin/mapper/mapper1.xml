@@ -10,19 +10,27 @@
 		<!-- <result column="count" property="count" /> -->
 	</resultMap>
 
+	<select id="selectbyName2" parameterType="String"
+		resultMap="boardMap">
+		select * from t_board
+		where writer like '$%{writer}%'
+	</select>
+
 	<select id="selectDforeach1" parameterType="int[]"
 		resultType="boardVO">
 		select * from t_board
 		where no in
-		<foreach collection="array" item="num" separator="," open="(" close=")">#{num}
+		<foreach collection="array" item="num" separator="," open="("
+			close=")">#{num}
 		</foreach>
 	</select>
-	
+
 	<select id="selectDforeach2" parameterType="boardVO"
 		resultType="boardVO">
 		select * from t_board
 		where no in
-		<foreach collection="numbers" item="num" separator="," open="(" close=")">#{num}
+		<foreach collection="numbers" item="num" separator=","
+			open="(" close=")">#{num}
 		</foreach>
 	</select>
 
