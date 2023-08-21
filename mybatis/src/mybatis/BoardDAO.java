@@ -26,7 +26,28 @@ public class BoardDAO {
         // selectByNo2();
         // delete();
         // update();
-        selectDynamicSQL();
+        //selectDynamicSQL();
+        //selectDynamicSQLif();
+        selectDynamicSQLif2();
+    }
+
+    public void selectDynamicSQLif() {
+        List<BoardVO> boardlist = sqlSession.selectList("mybatis.BoardDAO.selectDSQLif1", "new title");
+
+        for(BoardVO boardVO: boardlist) {
+            System.out.println(boardVO);
+        }
+    }
+    
+    public void selectDynamicSQLif2() {
+        BoardVO boardVO = new BoardVO();
+        boardVO.setTitle("new title");
+        
+        List<BoardVO> boardlist = sqlSession.selectList("mybatis.BoardDAO.selectDSQLif2", boardVO);
+
+        for(BoardVO board: boardlist) {
+            System.out.println(board);
+        }
     }
 
     public void insertNewPost() {

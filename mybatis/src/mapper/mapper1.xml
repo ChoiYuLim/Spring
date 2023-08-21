@@ -9,6 +9,18 @@
 		<result column="reg_date" property="regDate" />
 		<!-- <result column="count" property="count" /> -->
 	</resultMap>
+	
+	<select id="selectDSQLif1" parameterType="String" resultType="boardVO">
+		select * from t_board
+		<if test="title != null">
+			where title=#{title}</if>
+	</select>
+	
+	<select id="selectDSQLif2" parameterType="boardVO" resultType="boardVO">
+		select * from t_board
+		<if test="title != null">
+			where title=#{title}</if>
+	</select>
 
 	<select id="selectDSQL" resultMap="boardMap">
 		select * from t_board
