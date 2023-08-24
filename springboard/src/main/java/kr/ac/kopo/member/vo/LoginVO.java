@@ -1,7 +1,12 @@
 package kr.ac.kopo.member.vo;
 
+import javax.validation.constraints.NotEmpty;
+
 public class LoginVO {
+
+    @NotEmpty(message = "id는 필수입니다.")
     private String id;
+    @NotEmpty(message = "password는 필수입니다.")
     private String password;
 
     public String getId() {
