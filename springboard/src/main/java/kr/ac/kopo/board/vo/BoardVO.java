@@ -1,9 +1,15 @@
 package kr.ac.kopo.board.vo;
 
+import javax.validation.constraints.NotEmpty;
+
 public class BoardVO {
     private int no;
+
+    @NotEmpty(message = "title이 비어있습니다.")
     private String title;
+    @NotEmpty(message = "필수항목")
     private String writer;
+    @NotEmpty(message = "필수항목")
     private String content;
     private String reg_date;
     private int count;
@@ -28,8 +34,8 @@ public class BoardVO {
 
     @Override
     public String toString() {
-        return "BoardVO [no=" + no + ", title=" + title + ", writer=" + writer + ", content=" + content + ", reg_date="
-                + reg_date + ", count=" + count + "]";
+        return "BoardVO [no=" + no + ", title=" + title + ", writer=" + writer + ", content="
+                + content + ", reg_date=" + reg_date + ", count=" + count + "]";
     }
 
     public String getTitle() {
