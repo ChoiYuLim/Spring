@@ -47,5 +47,10 @@ public class MemberVO {
         this.password = password;
     }
 
+    @Override
+    public String toString() {
+        return "MemberVO [no=" + no + ", name=" + name + ", id=" + id + ", addr=" + addr
+                + ", password=" + password + "]";
+    }
 
 }
