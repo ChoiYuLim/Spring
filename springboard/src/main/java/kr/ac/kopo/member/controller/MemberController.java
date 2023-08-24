@@ -26,15 +26,23 @@ public class MemberController {
     }
 
     @PostMapping("/login")
-    public String loginProcess(@Valid LoginVO loginVO, Errors errors) {
+    public String loginProcess(@Valid LoginVO loginVO, Errors errors, Model model) {
 
         if (errors.hasErrors()) {// error 존개
             return "member/loginForm";
         } else { // null값이 없을 때 DB query 실행
             MemberVO memberVO = memberService.login(loginVO);
-            System.out.println("login이 완료되었습니다.");
-            System.out.println(memberVO);
-            return "redirect:/board";
+
+            if (memberVO == null) { // id와 password가 틀린 경우, 사용자 없음
+                System.err.println("id/password가 틀렸습니다.");
+                model.addAttribute("msg", "id와 password를 다시 확인하세요."); // member/loginForm으로 보내는 것
+                return "member/loginForm"; // 다시 로그인 하는 페이지로 이동
+            } else {
+                System.out.println("login이 완료되었습니다.");
+                System.out.println(memberVO);
+                return "redirect:/board";
+            }
+
 
         }
 
