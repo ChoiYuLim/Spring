@@ -12,16 +12,16 @@ public class LoginInterceptor implements HandlerInterceptor {
     public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler,
             ModelAndView modelAndView) throws Exception {
         System.out.println("postHandle 동작입니다.");
-        
+
     }
 
-    // loginInterceptorㄹ는 이름으로 instance를 생성함
+    // loginInterceptor라는 이름으로 instance를 생성함
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response,
             Object handler) throws Exception {
-        System.out.println("prewHandle 동작입니다.");
-        //로그인 안했으면, 로그인 하세요
-        //login.jsp 화면으로 이동
+        System.out.println("preHandle - 로그인 체크 동작입니다.");
+        // 로그인 안했으면, 로그인 하세요
+        // login.jsp 화면으로 이동
         return true;
     }
 
