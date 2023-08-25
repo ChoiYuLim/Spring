@@ -30,7 +30,7 @@ public class MemberController {
         return "redirect:/";
     }
 
-    //@GetMapping("/logout")
+    // @GetMapping("/logout")
     public String logout(HttpSession session) {
         // session.removeAttribute("currentUser");
         session.invalidate();
@@ -68,7 +68,19 @@ public class MemberController {
                 // 방법 1) session.setAttribute("currentUser", memberVO);
                 // 방법 2) @SessionAttribute를 class명 위에 설정한다.
                 model.addAttribute("currentUser", memberVO);
-                return "redirect:/ ";
+
+                // *****************************//
+                // 수정 필요. redirect 주소 수정 필요//
+                // *****************************//
+
+                String dest = (String) session.getAttribute("dest");
+                if (dest == null) {
+                    System.err.println("dest가 널입니다.");
+                    return "redirect:/ ";
+                } else {
+                    System.err.println("dest가 있습니다.");
+                    return "redirect:" + dest;
+                }
             }
         }
     }

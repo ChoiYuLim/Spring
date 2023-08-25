@@ -50,7 +50,7 @@
 			<mvc:exclude-mapping path="/login" />
 			<mvc:exclude-mapping path="/board" />
 			<mvc:exclude-mapping path="/resources/**" />
-			<ref bean="loginInterceptor" />
+			<ref bean="testInterceptor" />
 		</mvc:interceptor>
 	</mvc:interceptors>
 </beans>    
