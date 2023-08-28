@@ -11,7 +11,6 @@
 		showReplyList();
 		
 		$(document).on('click','.delBtn', function(){
-			alert("쉬는 시간이요");
 			
 			let replyNo = $(this).attr('id');
 			
@@ -20,7 +19,7 @@
 				url: '${pageContext.request.contextPath}/reply/'+replyNo,
 				method:'delete',
 				success:function(){
-					alert('delete 성공')
+					showReplyList();
 				},
 				error:function(){
 					alert('delete 실패')
@@ -62,7 +61,6 @@
 			url: '${pageContext.request.contextPath}/reply/${boardVO.no}',
 			method:'get',
 			success: function(data){
-				alert('showReplyList 성공');
 				console.log(data)
 				console.log(typeof data)
 				$('#replyList').empty();
