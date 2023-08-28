@@ -10,6 +10,8 @@
 	crossorigin="anonymous"></script>
 <script>
 	$(document).ready(function() {
+		showReplyList();
+		
 		$('#replyAddBtn').click(function() {
 			let replyContent = document.replyForm.content.value;
 			let replyWriter = document.replyForm.writer.value;
@@ -27,12 +29,42 @@
 					alert('insert 성공')
 					document.replyForm.content.value="";
 					document.replyForm.writer.value="";
+					showReplyList();
 				},
 				error: function(){alert('insert 실패')}
 			
 			})
 		})
 	})
+	
+	function showReplyList(){
+		//1. ajax reply list select
+		//2. 화면에 보여주는 작업
+		
+		$.ajax({
+			url: '${pageContext.request.contextPath}/reply/${boardVO.no}',
+			method:'get',
+			success: function(data){
+				alert('showReplyList 성공');
+				console.log(data)
+				console.log(typeof data)
+				$('#replyList').empty();
+				
+				$(data).each(function(){
+					str='<hr>';
+					str += '<strong>'+this.content +'</strong>'; 
+					str += '&nbsp;' + this.writer; + '&nbsp;';
+					str += '&nbsp;' + this.regDate + '&nbsp;';
+					str += '<button class="delBtn" id= ' + this.no +' />삭제</button>'
+					$('#replyList').append(str);
+				})
+				// replyList에 보여줄 것
+			},
+			error: function(){
+				alert('showReplyList 실패');
+			}
+		})
+	}
 </script>
 </head>
 <body>
@@ -75,5 +107,6 @@
 				value="댓글쓰기" id="replyAddBtn">
 		</form>
 	</div>
+	<div id="replyList"></div>
 </body>
 </html>
