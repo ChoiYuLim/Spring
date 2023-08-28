@@ -20,4 +20,8 @@ public class ReplyService {
         return replylist;
     }
 
+    public void deleteReplyByNo(int replyNo) {
+        replyDAO.deleteReplyByNo(replyNo);
+    }
+
 }

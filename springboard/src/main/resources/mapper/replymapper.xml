@@ -13,8 +13,15 @@
 
 	<select id="selectByBoardNo" parameterType="int"
 		resultType="kr.ac.kopo.reply.vo.ReplyVO">
-		select no, board_no as boardNo, writer, content, reg_date as regDate 
+		select no, board_no as boardNo, writer, content, reg_date
+		as regDate
 		from t_reply
 		where board_no = #{bno}
+		order by no desc
 	</select>
+
+	<delete id="deleteReplyByNo" parameterType="int">
+		delete from t_reply
+		where no=#{no}
+	</delete>
 </mapper>

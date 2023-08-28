@@ -5,12 +5,29 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<script src="https://code.jquery.com/jquery-3.7.0.js"
-	integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM="
-	crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.7.0.js"></script>
 <script>
 	$(document).ready(function() {
 		showReplyList();
+		
+		$(document).on('click','.delBtn', function(){
+			alert("쉬는 시간이요");
+			
+			let replyNo = $(this).attr('id');
+			
+			// reply/{replyNo}, delete
+			$.ajax({
+				url: '${pageContext.request.contextPath}/reply/'+replyNo,
+				method:'delete',
+				success:function(){
+					alert('delete 성공')
+				},
+				error:function(){
+					alert('delete 실패')
+				}
+			})
+			
+		})
 		
 		$('#replyAddBtn').click(function() {
 			let replyContent = document.replyForm.content.value;
