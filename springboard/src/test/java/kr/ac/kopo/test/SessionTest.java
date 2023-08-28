@@ -8,6 +8,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import kr.ac.kopo.board.dao.BoardDAO;
 import kr.ac.kopo.board.service.BoardServiceImpl;
 import kr.ac.kopo.board.vo.BoardVO;
 
@@ -47,9 +48,18 @@ public class SessionTest {
 
     @Test
     public void boardSelectbyNoTest() {
-        BoardVO board = sqlSessionTemplate.selectOne("springboard.board.dao.BoardDAO.selectbyNo", 4);
+        BoardVO board =
+                sqlSessionTemplate.selectOne("springboard.board.dao.BoardDAO.selectbyNo", 4);
 
         System.out.println(board);
+    }
+
+    @Autowired
+    private BoardDAO boardDAO;
+
+    @Test
+    public void replyTest() {
+        boardDAO.increseCount(11);
     }
 
 

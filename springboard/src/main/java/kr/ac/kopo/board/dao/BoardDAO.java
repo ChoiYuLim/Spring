@@ -9,4 +9,6 @@ public interface BoardDAO {
     BoardVO getPostbyNo(int no);
 
     void writeNewPost(BoardVO boardVO);
+
+    void increseCount(int no);
 }

@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import kr.ac.kopo.board.dao.BoardDAO;
 import kr.ac.kopo.board.vo.BoardVO;
+import kr.ac.kopo.reply.vo.ReplyVO;
 
 @Service
 public class BoardServiceImpl implements BoardService {
