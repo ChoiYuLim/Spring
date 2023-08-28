@@ -11,4 +11,10 @@
 		values(seq_t_reply_no.nextval,#{writer},#{content},#{boardNo})
 	</insert>
 
+	<select id="selectByBoardNo" parameterType="int"
+		resultType="kr.ac.kopo.reply.vo.ReplyVO">
+		select no, board_no as boardNo, writer, content, reg_date as regDate 
+		from t_reply
+		where board_no = #{bno}
+	</select>
 </mapper>
